@@ -20,53 +20,69 @@
             <div
               class="w-full lg:w-[30%] xl:w-[25%] mb-4 lg:mb-0 lg:pr-4 shadow-sm rounded-lg border border-solid border-gray-300">
               <div class="p-4" *ngIf="courseData">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
-                  <div class="label-group">
-                    <label class="text-lg font-bold mb-1 text-[#2C384B]">Course Code</label>
-                    <div>{{ courseData.courseId }}</div>
-                  </div>
-                  <div class="label-group">
-                    <label class="text-lg font-bold mb-1 text-[#2C384B]">Course Name</label>
-                    <div>{{ courseData.courseName }}</div>
-                  </div>
-                  <div class="label-group">
-                    <label class="text-lg font-bold mb-1 text-[#2C384B]">Course Type</label>
-                    <div>{{ courseData.courseType }}</div>
-                  </div>
-                  <div class="label-group">
-                    <label class="text-lg font-bold mb-1 text-[#2C384B]">Course Period</label>
-                    <div>{{ courseData.coursePeriod }}</div>
-                  </div>
-                  <div class="label-group md:col-span-2 lg:col-span-1">
-                    <label class="text-lg font-bold mb-1 text-[#2C384B]">Credits (4)</label>
-                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 gap-2">
-                      <div>Lecture - {{ courseData.credits.lecture }}</div>
-                      <div>Tutorial - {{ courseData.credits.tutorial }}</div>
-                      <div>Practical - {{ courseData.credits.practical }}</div>
-                      <div>Project - {{ courseData.credits.project }}</div>
+                <div class="flex items-center justify-between cursor-pointer" (click)="toggleExpand()">
+                    <div class="label-group">
+                        <label class="text-lg font-bold mb-1 text-[#2C384B]">Course code</label>
+                        <div>{{ courseData.courseId }}</div>
+                      </div>
+                  <svg *ngIf="isMobile"
+                    [@rotateIcon]="isExpanded ? 'up' : 'down'"
+                    class="w-4 h-4 fill-current" 
+                    viewBox="0 0 20 20"
+                  >
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                  </svg>
+                </div>
+                <hr *ngIf="isExpanded" class="my-4">
+          
+                <div [@expandCollapse]="isExpanded ? 'expanded' : 'collapsed'" class="mt-4">
+                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
+                    <div class="label-group">
+                      <label class="text-lg font-bold mb-1 text-[#2C384B]">Course Name</label>
+                      <div>{{ courseData.courseName }}</div>
+                    </div>
+                    <hr *ngIf="!isTabView" class="">
+                    <div class="label-group">
+                      <label class="text-lg font-bold mb-1 text-[#2C384B]">Course Type</label>
+                      <div>{{ courseData.courseType }}</div>
+                    </div>
+                    <hr *ngIf="!isTabView" class="">
+                    <div class="label-group">
+                      <label class="text-lg font-bold mb-1 text-[#2C384B]">Course Period</label>
+                      <div>{{ courseData.coursePeriod }}</div>
+                    </div>
+                    <hr *ngIf="!isTabView" class="">
+                    <div class="label-group md:col-span-2 lg:col-span-1">
+                      <label class="text-lg font-bold mb-1 text-[#2C384B]">Credits (4)</label>
+                      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 gap-2">
+                        <div>Lecture - {{ courseData.credits.lecture }}</div>
+                        <div>Tutorial - {{ courseData.credits.tutorial }}</div>
+                        <div>Practical - {{ courseData.credits.practical }}</div>
+                        <div>Project - {{ courseData.credits.project }}</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <hr class="my-4">
-                <div class="label-group">
-                  <label class="text-lg font-bold mb-2 text-[#2C384B]">Course Outcomes (CO)</label>
-                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
-                    <ng-container *ngFor="let co of courseData.courseOutcomes">
-                      <label class="text-center p-1 px-2 bg-[#91b07c] rounded-lg">
-                        {{co}}
-                      </label>
-                    </ng-container>
+                  <hr class="my-4">
+                  <div class="label-group">
+                    <label class="text-lg font-bold mb-2 text-[#2C384B]">Course Outcomes (CO)</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
+                      <ng-container *ngFor="let co of courseData.courseOutcomes">
+                        <label class="text-center p-1 px-2 bg-[#91b07c] rounded-lg">
+                          {{co}}
+                        </label>
+                      </ng-container>
+                    </div>
                   </div>
-                </div>
-                <hr class="my-4">
-                <div class="label-group">
-                  <label class="text-lg font-bold mb-2 text-[#2C384B]">Mapped to this Course</label>
-                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
-                    <ng-container *ngFor="let co of courseData.mappedPOs">
-                      <label class="text-center p-1 px-2 text-white bg-[#2E6995] rounded-lg">
-                        {{co}}
-                      </label>
-                    </ng-container>
+                  <hr class="my-4">
+                  <div class="label-group">
+                    <label class="text-lg font-bold mb-2 text-[#2C384B]">Mapped to this Course</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
+                      <ng-container *ngFor="let po of courseData.mappedPOs">
+                        <label class="text-center p-1 px-2 text-white bg-[#2E6995] rounded-lg">
+                          {{po}}
+                        </label>
+                      </ng-container>
+                    </div>
                   </div>
                 </div>
               </div>
