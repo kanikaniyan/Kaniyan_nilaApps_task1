@@ -1,0 +1,66 @@
+<div class="relative h-full z-[300]">
+    <!-- Toggle button -->
+    <button (click)="toggleSidebar()"
+        class="fixed top-2 sm:top-4 left-2 z-50 p-2 text-[#2C384B] rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-300"
+        [ngClass]="{
+            '!left-[12rem] transition-all duration-300 ease-in-out': isOpen && !isMobile
+        }">
+        <svg *ngIf="!isOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg *ngIf="isOpen && !isMobile" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </button>
+
+    <!-- Sidebar -->
+    <div class="fixed top-0 left-0 h-full bg-white text-[#2C384B] shadow-md transition-all duration-300 ease-in-out overflow-hidden z-20"
+        [ngClass]="{
+        'w-64': isOpen,
+        'w-16': !isOpen && !isMobile,
+        'w-0': !isOpen && isMobile
+      }">
+
+        <button *ngIf="isMobile" (click)="toggleSidebar()"
+            class="absolute top-4 right-4 p-2 rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+
+        <!-- Sidebar content -->
+        <nav class="mt-16 py-4 transition-all" [ngClass]="{'p-4': !isOpen}">
+            <ul>
+                <li class="mb-6">
+                    <a routerLink="/dashboard" (click)="setActiveItem('/dashboard')"
+                        [ngClass]="{'pl-4 py-3': isOpen, 'bg-[#2F6896] text-white': activeItem === '/dashboard', 'hover:text-gray-300': activeItem !== '/programs'}"
+                        class="flex items-center p-[2px_0_2px_6px] transition-all">
+                        <svg class="w-6 h-6 mr-2" [ngClass]="{'mr-6': isOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                            </path>
+                        </svg>
+                        <h2 class="text-xl font-semibold" [ngClass]="{'hidden': !isOpen}">Dashboard</h2>
+                    </a>
+                </li>
+                <li class="mb-2">
+                    <a routerLink="/programs" (click)="setActiveItem('/programs')"
+                        [ngClass]="{'pl-4 py-3': isOpen, 'bg-[#2F6896] text-white': activeItem === '/programs', 'hover:text-gray-300': activeItem !== '/dashboard'}"
+                        class="flex items-center p-[2px_0_2px_6px] transition-all">
+                        <svg class="w-6 h-6 mr-2" [ngClass]="{'mr-6': isOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                            </path>
+                        </svg>
+                        <h2 class="text-xl font-semibold" [ngClass]="{'hidden': !isOpen}">Programs</h2>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

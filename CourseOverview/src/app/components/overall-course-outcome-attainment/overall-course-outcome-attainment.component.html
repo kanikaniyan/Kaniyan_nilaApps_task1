@@ -1,0 +1,19 @@
+<div class="border border-solid border-[#D3D3D3] p-4 rounded-md">
+    <div class="grid sm:grid-cols-2">
+        <canvas class="!w-[200px] !sm:w-[550px] !md:w-[200px] !h-[200px] !sm:h-[250px] !md:h-[200px]" baseChart
+            [labels]="doughnutChartLabels"
+            [datasets]="doughnutChartDatasets"
+            [options]="doughnutChartOptions"
+            [legend]="true"
+            [type]="'doughnut'">
+        </canvas>
+
+        <canvas class="!w-[200px] !sm:w-[550px] !md:w-[200px] !h-[200px] !sm:h-[250px] !md:h-[200px]" baseChart
+            [labels]="doughnutChartLabels1"
+            [datasets]="doughnutChartDatasets1"
+            [options]="doughnutChartOptions"
+            [legend]="true"
+            [type]="'doughnut'">
+        </canvas>
+    </div>
+</div>

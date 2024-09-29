@@ -1,0 +1,139 @@
+<ng-container>
+    <div *ngIf="!isLoading" class="container mx-auto p-4">
+        <div class="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center">
+          <!-- Main Title -->
+          <h2 class="text-lg sm:text-xl font-bold mb-2 text-center sm:text-left w-full">
+            {{ !isObeReport ? 'OBE Evaluation Report' : 'Course Evaluation Report' }}
+          </h2>
+          
+          <!-- Switch Link -->
+          <div class="text-center sm:text-right w-full mt-1 mb-2 sm:mt-0">
+            <h2 class="text-[#5F8CAD] cursor-pointer underline text-sm sm:text-xl font-medium" (click)="toggleObeReport()">
+              Switch to {{ isObeReport ? 'OBE Evaluation Report' : 'Course Evaluation Report' }}
+            </h2>
+          </div>
+        </div>
+        <!-- main container -->
+        <div class="bg-white rounded-lg shadow-md">
+          <div class="p-4 flex flex-col lg:flex-row">
+            <!-- course details -->
+            <div
+              class="w-full lg:w-[30%] xl:w-[25%] mb-4 lg:mb-0 lg:pr-4 shadow-sm rounded-lg border border-solid border-gray-300">
+              <div class="p-4" *ngIf="courseData">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
+                  <div class="label-group">
+                    <label class="text-lg font-bold mb-1 text-[#2C384B]">Course Code</label>
+                    <div>{{ courseData.courseId }}</div>
+                  </div>
+                  <div class="label-group">
+                    <label class="text-lg font-bold mb-1 text-[#2C384B]">Course Name</label>
+                    <div>{{ courseData.courseName }}</div>
+                  </div>
+                  <div class="label-group">
+                    <label class="text-lg font-bold mb-1 text-[#2C384B]">Course Type</label>
+                    <div>{{ courseData.courseType }}</div>
+                  </div>
+                  <div class="label-group">
+                    <label class="text-lg font-bold mb-1 text-[#2C384B]">Course Period</label>
+                    <div>{{ courseData.coursePeriod }}</div>
+                  </div>
+                  <div class="label-group md:col-span-2 lg:col-span-1">
+                    <label class="text-lg font-bold mb-1 text-[#2C384B]">Credits (4)</label>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 gap-2">
+                      <div>Lecture - {{ courseData.credits.lecture }}</div>
+                      <div>Tutorial - {{ courseData.credits.tutorial }}</div>
+                      <div>Practical - {{ courseData.credits.practical }}</div>
+                      <div>Project - {{ courseData.credits.project }}</div>
+                    </div>
+                  </div>
+                </div>
+                <hr class="my-4">
+                <div class="label-group">
+                  <label class="text-lg font-bold mb-2 text-[#2C384B]">Course Outcomes (CO)</label>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
+                    <ng-container *ngFor="let co of courseData.courseOutcomes">
+                      <label class="text-center p-1 px-2 bg-[#91b07c] rounded-lg">
+                        {{co}}
+                      </label>
+                    </ng-container>
+                  </div>
+                </div>
+                <hr class="my-4">
+                <div class="label-group">
+                  <label class="text-lg font-bold mb-2 text-[#2C384B]">Mapped to this Course</label>
+                  <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">
+                    <ng-container *ngFor="let co of courseData.mappedPOs">
+                      <label class="text-center p-1 px-2 text-white bg-[#2E6995] rounded-lg">
+                        {{co}}
+                      </label>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="content lg:pl-4 w-full lg:w-[70%] xl:w-[75%]">
+              <div *ngIf="courseData" class="flex flex-col sm:flex-row justify-start gap-4 mb-4">
+                <div class="student_mark flex items-center">
+                  <div class="px-2 py-1 total-marks rounded-lg bg-gray-300 text-center flex flex-row items-center w-full">
+                    <span class="text-sm p-2 flex-grow">Total Students</span>
+                    <strong class="text-2xl p-1">{{ courseData.totalStudents }}</strong>
+                  </div>
+                </div>
+  
+                <div class="student_mark flex items-center">
+                  <div class="px-2 py-1 total-marks rounded-lg bg-gray-300 text-center flex flex-row items-center w-full">
+                    <span class="text-sm p-2 flex-grow">Course Average Mark</span>
+                    <strong class="text-2xl p-1">{{ courseData.courseAverageMark }}%</strong>
+                  </div>
+                </div>
+              </div>
+  
+              <div *ngIf="!isObeReport && !isLoading1; else courseevaluationreport" class="container">
+                <div class="py-2">
+                  <h2 class="font-bold py-2">Assessment Progress</h2>
+                  <div class="w-full overflow-x-auto">
+                    <app-assessment-progress></app-assessment-progress>
+                  </div>
+                </div>
+                <div class="py-2">
+                  <h4 class="font-bold py-2">Students' Attendance</h4>
+                  <div class="w-full overflow-x-auto">
+                    <app-attendance-report></app-attendance-report>
+                  </div>
+                </div>
+              </div>
+  
+              <ng-template #courseevaluationreport>
+                <div *ngIf="!isLoading1" class="py-2">
+                  <h2 class="font-bold py-2">Evaluation status</h2>
+                  <div>
+                    <app-evaluation-status></app-evaluation-status>
+                  </div>
+                </div>
+                <div *ngIf="!isLoading1" class="grid xl:grid-cols-2 py-2">
+                  <div>
+                    <h2 class="font-bold py-2">Course Outcome Attainments</h2>
+                    <div class="">
+                      <app-course-outcome-attainment></app-course-outcome-attainment>
+                    </div>
+                  </div>
+                  <div>
+                    <h2 class="font-bold py-2">Course Outcome Attainments</h2>
+                    <app-overall-course-outcome-attainment class="grid place-items-center"></app-overall-course-outcome-attainment>
+                  </div>
+                </div>
+              </ng-template>
+              <app-skeleton [isLoading]="isLoading1" ></app-skeleton>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isLoading1" class="fixed sm:hidden inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="animate-buffer-left-right bg-gradient-to-r from-gray-400 via-gray-300 to-gray-200 bg-[length:200%_100%] rounded-lg p-4 w-3/4 max-w-xs text-center shadow-lg">
+          <h2 class="text-lg font-bold">Loading...</h2>
+        </div>
+      </div>
+      <app-skeleton [isLoading]="isLoading" ></app-skeleton>
+      
+</ng-container>

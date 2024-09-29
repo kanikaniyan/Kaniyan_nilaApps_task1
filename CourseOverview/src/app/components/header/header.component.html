@@ -1,0 +1,99 @@
+<header class="sticky top-0 w-full bg-white shadow-md z-50">
+    <div class="container mx-auto px-4 py-3">
+        <!-- Mobile View -->
+        <div class="sm:hidden">
+            <div class="flex items-center justify-between mb-3">
+                <!-- Burger Icon -->
+                <button class="text-gray-600 invisible">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+
+                <!-- Logo -->
+                <div class="flex items-center space-x-1">
+                    <div class="bg-gradient-to-r from-purple-400 to-indigo-600 p-1 rounded-md shadow-lg">
+                        <span class="text-white font-semibold text-sm">H O R I Z O N</span>
+                    </div>
+                    <span class="text-xs text-indigo-700 font-normal tracking-wider">Institute</span>
+                </div>
+
+                <div class="relative">
+                    <button (click)="toggleProfileDropdown()" class="profile-button w-8 h-8 flex items-center justify-center bg-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M12 2a5 5 0 100 10 5 5 0 000-10zM4 20a8 8 0 1116 0H4z" clip-rule="evenodd"/>
+                      </svg>
+                    </button>
+                    
+                    <!-- Profile Dropdown -->
+                    <div *ngIf="isProfileDropdownOpen" class="profile-dropdown absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5">
+                      <div class="px-4 py-2 text-sm text-gray-700">
+                        <p class="font-semibold">Kaniyan K</p>
+                        <p class="text-xs text-gray-500">Super Admin</p>
+                      </div>
+                      <hr class="my-1">
+                      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your Profile</a>
+                      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                      <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="w-full">
+                <input type="text" placeholder="Search..."
+                    class="w-full p-2 border rounded-md border-gray-300 focus:outline-none focus:border-blue-400" />
+            </div>
+        </div>
+
+        <!-- Tablet and Desktop View -->
+        <div class="hidden sm:flex items-center justify-between">
+            <!-- Logo or Title -->
+            <div class="flex items-center space-x-2">
+                <div class="bg-gradient-to-r from-purple-400 to-indigo-600 p-2 rounded-md shadow-lg">
+                    <span class="text-white font-semibold text-md lg:text-lg">H O R I Z O N</span>
+                </div>
+                <span class="text-sm lg:text-md text-indigo-700 font-normal tracking-wider">Institute
+                    <div class="w-12 lg:w-16 h-1 bg-blue-600"></div>
+                </span>
+            </div>
+
+            <!-- Profile Section -->
+            <div class="flex items-center space-x-4">
+                <!-- Search Bar -->
+                <div class="mx-4">
+                    <input type="text" placeholder="Search..."
+                        class="w-full p-2 border rounded-md border-gray-300 focus:outline-none focus:border-blue-400" />
+                </div>
+                <!-- User Name -->
+                <div class="flex flex-col items-start">
+                    <span class="font-medium text-sm lg:text-base">Kaniyan K</span>
+                    <span class="text-xs font-normal text-gray-600">Super Admin</span>
+                </div>
+                <!-- Profile Image -->
+                 <div class="relative">
+                     <button (click)="toggleProfileDropdown()" class="profile-button w-10 h-10 lg:w-12 lg:h-12 flex items-center justify-center bg-gray-300 rounded-full">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 lg:w-8 lg:h-8 text-gray-400"
+                             viewBox="0 0 24 24" fill="currentColor">
+                             <path fill-rule="evenodd" d="M12 2a5 5 0 100 10 5 5 0 000-10zM4 20a8 8 0 1116 0H4z"
+                                 clip-rule="evenodd" />
+                         </svg>
+                     </button>
+     
+                     <div *ngIf="isProfileDropdownOpen" class="profile-dropdown absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5">
+                         <div class="px-4 py-2 text-sm text-gray-700">
+                           <p class="font-semibold">Kaniyan K</p>
+                           <p class="text-xs text-gray-500">Super Admin</p>
+                         </div>
+                         <hr class="my-1">
+                         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Your Profile</a>
+                         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                         <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
+                       </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</header>

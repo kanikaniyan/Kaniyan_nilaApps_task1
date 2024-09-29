@@ -1,0 +1,29 @@
+.course-overview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .course-info {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .charts {
+    flex: 2;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .assessment-progress,
+  .attendance {
+    width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .course-overview {
+      flex-direction: column;
+    }
+  }

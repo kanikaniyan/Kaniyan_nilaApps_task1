@@ -1,0 +1,82 @@
+{
+    "courses": [
+      {
+        "courseId": "BA3102",
+        "courseName": "Quantitative Techniques",
+        "courseType": "Program Elective",
+        "coursePeriod": "Semester - I",
+        "credits": {
+          "lecture": 3,
+          "tutorial": 0,
+          "practical": 1,
+          "project": 0
+        },
+        "totalStudents": 102,
+        "courseAverageMark": 85,
+        "courseOutcomes": ["CO2", "CO4", "CO5", "CO7", "CO13", "CO14"],
+        "mappedPOs": ["PO7", "PO10", "PO12", "PO8"]
+      }
+    ],
+    "assessmentProgress": [
+      {
+        "category": "Assignment",
+        "tasks": [
+          { "task": "Assignment1", "status":"completed", "pending": 0, "completed": 100 },
+          { "task": "Assignment2", "status":"pending", "pending": 100, "completed": 0 },
+          { "task": "Assignment3", "status":"completed", "pending": 10, "completed": 90 }
+        ]
+      },
+      {
+        "category": "Quiz",
+        "tasks": [
+          { "task": "Quiz1", "status":"completed", "pending": 20, "completed": 80 },
+          { "task": "Quiz2", "status":"completed", "pending": 10, "completed": 90 },
+          { "task": "Quiz3", "status":"completed", "pending": 70, "completed": 30 },
+          { "task": "Quiz4", "status":"pending", "pending": 100, "completed": 0 },
+          { "task": "Quiz5", "status":"pending", "pending": 100, "completed": 0 }
+        ]
+      },
+      {
+        "category": "Presentation",
+        "tasks": [
+          { "task": "Presentation1", "status":"completed", "pending": 20, "completed": 80 },
+          { "task": "Presentation2", "status":"completed", "pending": 45, "completed": 55 },
+          { "task": "Presentation3", "status":"completed", "pending": 65, "completed": 35 }
+        ]
+      }
+    ],
+    "attendance": [
+      { "week": "1/7", "percentage": 25 },
+      { "week": "15/7", "percentage": 55 },
+      { "week": "22/7", "percentage": 18 },
+      { "week": "29/7", "percentage": 78 },
+      { "week": "5/8", "percentage": 60 },
+      { "week": "12/8", "percentage": 80 },
+      { "week": "19/8", "percentage": 65 },
+      { "week": "26/8", "percentage": 92 }
+    ],
+    "assessmentData": {
+      "courseOutcomeAttainments": [
+        { "label": "CO1", "value": 100, "color": "#8bc34a" },
+        { "label": "CO2", "value": 20, "color": "#4caf50" },
+        { "label": "CO3", "value": 75, "color": "#90a4ae" },
+        { "label": "CO4", "value": 55, "color": "#7986cb" },
+        { "label": "CO5", "value": 85, "color": "#9575cd" },
+        { "label": "CO6", "value": 45, "color": "#ce93d8" },
+        { "label": "CO7", "value": 70, "color": "#f48fb1" },
+        { "label": "CO8", "value": 90, "color": "#ba68c8" },
+        { "label": "CO9", "value": 65, "color": "#bcaaa4" },
+        { "label": "CO10", "value": 80, "color": "#d4e157" }
+      ],
+      "overallCourseOutcomeAttainment": {
+        "totalStudents": 102,
+        "evaluationProgress": 5,
+        "categories": [
+          { "label": "80% Above", "value": 25, "color": "#9FC286" },
+          { "label": "70% - 80%", "value": 45, "color": "#769064" },
+          { "label": "60% - 70%", "value": 32, "color": "#C4DEB3" }
+        ]
+      }
+    }
+  }
+  
