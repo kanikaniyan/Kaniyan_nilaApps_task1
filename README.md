@@ -118,6 +118,13 @@ To run the project in local:
 - The server will start run on port: 4200.
 - use this http://localhost:4200/ url to see the output on the browser.
 
+### Deployed Application
+
+- The Application has been deployed in the AWS S3 bucket.
+- ![nil-apps-course-overview](http://nila-apps-course-overview-edrevel.s3-website-us-east-1.amazonaws.com/)
+- or copy and paste the link in the browser
+- http://nila-apps-course-overview-edrevel.s3-website-us-east-1.amazonaws.com/
+
 ### Images for reference
 
 - Overview
